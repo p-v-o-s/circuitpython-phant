@@ -3,6 +3,9 @@ import time
 import machine
 import onewire, ds18x20
 
+BASE_URL = 'http://159.203.128.53/input/'
+PUBLIC_KEY = 'bLzgdDwgq4CgqLZmwdrYHGK68908'
+PRIVATE_KEY = 'GmPOGBYOW6spAV328wynUBEgzeGz'
 
 def do_connect():
     import network
@@ -58,7 +61,7 @@ def post_values():
     
     temps = get_temps()
 
-    url='http://159.203.128.53/input/bLzgdDwgq4CgqLZmwdrYHGK68908?private_key=GmPOGBYOW6spAV328wynUBEgzeGz&temp1='+str(temps[0])+'&temp2='+str(temps[1])+'&temp3='+str(temps[2])
+    url=BASE_URL+PUBLIC_KEY+'?private_key='+PRIVATE_KEY+'&temp1='+str(temps[0])+'&temp2='+str(temps[1])+'&temp3='+str(temps[2])
 
     http_get(url)
 
